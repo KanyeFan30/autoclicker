@@ -8,30 +8,23 @@ import org.lwjgl.input.Mouse;
 
 public class AutoclickerHandler {
     private final Minecraft mc = Minecraft.getMinecraft();
-    private boolean isAutoClicking = false;
-    private long lastClickTime = 0;
+    private long lastFrameTime = 0;
 
     @SubscribeEvent
     public void onMouseEvent(InputEvent.MouseInputEvent event) {
         Mouse.poll();
         if (Mouse.isButtonDown(0)) {
-            if (!isAutoClicking) {
-                isAutoClicking = true;
-            }
+            Autoclicker.start();
         } else {
-            isAutoClicking = false;
+            Autoclicker.stop();
         }
     }
 
     @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event) {
+    public void onRenderTick(TickEvent.RenderTickEvent event) {
         if (mc.theWorld == null || mc.thePlayer == null) return;
-        if (isAutoClicking) {
-            long currentTime = System.currentTimeMillis();
-            long clickDelay = AutoclickerConfig.getClickDelay();
-            if (currentTime - lastClickTime >= clickDelay) {
-                lastClickTime = currentTime;
-            }
-        }
+        long currentTime = System.currentTimeMillis();
+        Autoclicker.update(currentTime - lastFrameTime);
+        lastFrameTime = currentTime;
     }
 }
