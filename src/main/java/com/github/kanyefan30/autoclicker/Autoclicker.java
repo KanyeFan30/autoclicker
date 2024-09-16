@@ -1,5 +1,8 @@
 package com.github.kanyefan30.autoclicker;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
+
 public class Autoclicker {
     private static int cps = 10;
     private static boolean isAutoClicking = false;
@@ -17,7 +20,7 @@ public class Autoclicker {
         if (!isAutoClicking) return;
         lastClickTime += deltaTime;
         if (lastClickTime >= getClickDelay()) {
-            // click the mouse
+            Minecraft.getMinecraft().thePlayer.swingItem();
             lastClickTime = 0;
         }
     }
