@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 
 public class Autoclicker {
-    private static int cps = 10;
+    private static int cps = 3;
     private static boolean isAutoClicking = false;
     private static long lastClickTime = 0;
 
@@ -21,6 +21,7 @@ public class Autoclicker {
         lastClickTime += deltaTime;
         if (lastClickTime >= getClickDelay()) {
             Minecraft.getMinecraft().thePlayer.swingItem();
+            KeyBinding.onTick(Minecraft.getMinecraft().gameSettings.keyBindAttack.getKeyCode());
             lastClickTime = 0;
         }
     }
