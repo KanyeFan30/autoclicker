@@ -14,10 +14,10 @@ public class AutoclickerHandler {
     public void onMouseEvent(InputEvent.MouseInputEvent event) {
         Mouse.poll();
         if (Mouse.isButtonDown(0)) {
-            System.out.println("mouse clicked down");
+//            System.out.println("mouse clicked down");
             Autoclicker.start();
         } else {
-            System.out.println("mouse unclicked");
+//            System.out.println("mouse unclicked");
             Autoclicker.stop();
         }
     }
