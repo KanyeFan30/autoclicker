@@ -12,6 +12,10 @@ public class Autoclicker {
         cps = newCps;
     }
 
+    public static int getCps() {
+        return cps;
+    }
+
     public static long getClickDelay() {
         return 1000 / cps;
     }
