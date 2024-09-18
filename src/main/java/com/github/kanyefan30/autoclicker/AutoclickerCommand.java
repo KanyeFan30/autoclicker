@@ -29,7 +29,7 @@ public class AutoclickerCommand extends CommandBase {
                     Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§6Max cps is 20"));
                 } else {
                     Autoclicker.setCps(Integer.parseInt(args[1]));
-                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§Autoclicker cps set to §3" + Autoclicker.getCps()));
+                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§6Autoclicker cps set to §3" + Autoclicker.getCps()));
                 }
             } else {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§6Usage:"));
